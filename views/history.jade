@@ -1,0 +1,86 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Koscom PoC
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            거래 내역
+
+  div.container
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th 일련번호
+          th 종목명
+          th 매도
+          th 매수
+          th 수량
+          th 금액
+          th 거래일자
+          th 거래시각
+      tbody
+        tr(data-toggle='modal' data-target='#historyDetail')
+          td(style='vertical-align:middle;') 1
+          td(style='vertical-align:middle;') 국민주택 2013-02
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;') 100
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;') 2016-04-02
+          td(style='vertical-align:middle; text-align:center;') 09:24
+        tr
+          td(style='vertical-align:middle;') 2
+          td(style='vertical-align:middle;') 통화안정증 0146-1804-02
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;') 150
+          td(style='vertical-align:middle;')
+          td(style='vertical-align:middle;') 2016-04-03
+          td(style='vertical-align:middle; text-align:center;') 10:20
+
+  div(class='modal fade', id='historyDetail', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          table.table.table-striped.table-bordered
+            tbody
+              tr
+                td 종목코드
+                td KR1015014320
+              tr
+                td 종목명
+                td 국민주택 2013-02
+              tr
+                td 발행일
+                td 2013-02-28
+              tr
+                td 만기일
+                td 2018-02-28
+              tr
+                td 이자지급유형
+                td 복리채
+              tr
+                td 이자계산주기(월)
+                td 12
+              tr
+                td 표면금리
+                td 2.5
+              tr
+                td 온라인소유자
+                td 게시자A
+              tr
+                td 수량
+                td 100
+
+        div.modal-footer
+          button(type='button', class='btn btn-default', data-dismiss='modal') 닫기
+
+  //h1= title
+  //p Welcome to #{title}

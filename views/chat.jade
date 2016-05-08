@@ -1,0 +1,58 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Koscom PoC
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            메신저
+
+  div.container
+
+      label 거래 메신저
+      span#feedback
+
+
+
+      form.form-inline
+        div
+          br
+          table.table.table-borderless
+            tr
+              td(width='40%')
+                div#msgWindow.shadow
+                  p 게시자A : 반갑습니다.
+                  p 참여자B : 네 ~ 이율 0.001만 내려주시면 바로 사겠습니다.
+                  p 게시자A : ....
+              td
+                div#userWindow.shadow
+                  p 참여자 정보
+                  p 게시자A
+                  p 참여자B
+            tr
+              td
+                select.form-control 종목
+                  option - 종목선택 -
+                  option 국민은행
+
+                b(style='margin-left:15px;') 단가
+                input(type='text', style='margin-left:10px;', size='15px')
+                b(style='margin-left:15px;') 수량
+                input(type='text', style='margin-left:10px;', size='15px')
+            tr
+              td
+                b(style='margin-left:5px;') 나의 잔고
+                button(style='margin-left:15px;', class='btn btn-default btn-s') 조회
+            tr
+              td
+                textarea(class='form-control', style='min-width: 100%', rows='3')
+              td
+                button(style='margin-left:15px;', class='btn btn-default btn-lg') 보내기
+
+
+  //h1= title
+  //p Welcome to #{title}

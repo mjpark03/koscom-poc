@@ -1,0 +1,59 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Koscom PoC
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            거래 게시판
+
+  div.container
+    table.table.table-striped.table-bordered
+      thead
+        tr
+          th 시간
+          th 종목명
+          th 만기일
+          th 구분
+          th 단가
+          th 수량
+          th 상태
+          th 거래참여
+      tbody
+        tr
+          td(style='vertical-align:middle;') 10:25
+          td(style='vertical-align:middle;') 국민주택 2013-02
+          td(style='vertical-align:middle;') 2018-02-28
+          td(style='vertical-align:middle;') 매도
+          td(style='vertical-align:middle;') 11578.50
+          td(style='vertical-align:middle;') 100
+          td(style='vertical-align:middle;') 대기
+          td(style='vertical-align:middle; text-align:center;')
+            button.btn.btn-default 거래참여
+        tr
+          td(style='vertical-align:middle;') 09:24
+          td(style='vertical-align:middle;') 통화안정증 0146-1804-02
+          td(style='vertical-align:middle;') 2018-04-02
+          td(style='vertical-align:middle;') 매수
+          td(style='vertical-align:middle;') 10016.69
+          td(style='vertical-align:middle;') 150
+          td(style='vertical-align:middle;') 대기
+          td(style='vertical-align:middle; text-align:center;')
+            button.btn.btn-default 거래참여
+        tr
+          td(style='vertical-align:middle;') 09:17
+          td(style='vertical-align:middle;') 국고채 02750-1709(12-4)
+          td(style='vertical-align:middle;') 2017-09-10
+          td(style='vertical-align:middle;') 매수
+          td(style='vertical-align:middle;') 10179.33
+          td(style='vertical-align:middle;') 20
+          td(style='vertical-align:middle;') 완료
+          td(style='vertical-align:middle; text-align:center;')
+            button.btn.btn-primary 거래참여
+
+  //h1= title
+  //p Welcome to #{title}

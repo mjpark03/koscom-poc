@@ -1,0 +1,41 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Koscom PoC
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            SAMPLE CODE TEST
+
+  div.container
+    button(id='sampleCreateBtn', class='btn btn-default btn-lg', style='margin-left:15px;') CREATE
+
+    button(id='sampleReadBtn', class='btn btn-default btn-lg', style='margin-left:15px;') READ
+
+    button(id='sampleUpdateBtn', class='btn btn-default btn-lg', style='margin-left:15px;') UPDATE
+
+    button(id='sampleDeleteBtn', class='btn btn-default btn-lg', style='margin-left:15px;') DELETE
+
+  div(class='modal fade', id='sampleModal', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          table.table.table-striped.table-bordered
+            tbody
+              tr
+                td
+                  p(id='assetCode')
+                td
+                  p(id='assetName')
+
+        div.modal-footer
+          button(type='button', class='btn btn-default', data-dismiss='modal') 닫기
+
+  //h1= title
+  //p Welcome to #{title}
