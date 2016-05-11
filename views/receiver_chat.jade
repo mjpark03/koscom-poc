@@ -1,0 +1,44 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Project
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            메신저
+
+  div.container
+
+      label 거래 메신저
+      span#feedback
+
+
+
+      form.form-inline
+        div
+          br
+          table.table.table-borderless
+            tr
+              td(width='40%')
+                div#msgWindow.shadow
+                  ul(id='receiverWindow')
+
+              td
+                div#userWindow.shadow
+
+            tr
+              td
+                b(style='margin-left:5px;') 나의 잔고
+                button(style='margin-left:15px;', class='btn btn-default btn-s') 조회
+            tr
+              td
+                textarea(id='receiverMessage', class='form-control', style='min-width: 100%', rows='3')
+              td
+                button(id='receiverSendBtn', style='margin-left:15px;', class='btn btn-default btn-lg') 보내기
+
+  //h1= title
+  //p Welcome to #{title}

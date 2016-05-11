@@ -35,6 +35,8 @@ $(function() {
                 $('#assetCode').text(result['assetCode']);
                 $('#assetName').text(result['assetName']);
                 $('#sampleModal').modal();
+
+                /* */
             }
         });
     });

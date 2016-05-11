@@ -1,4 +1,5 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,9 +8,16 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
-// var sample = require('./routes/sample');
+var trade = require('./routes/trade');
 
 var app = express();
+
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+var socket;
+
+var port = 3000;
+var host = '127.0.0.1';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -25,9 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-// app.use('/sample', sample.router);
-
-// sample.api.init();
+app.use('/trade', trade);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,8 +66,29 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000, function () {
+server.listen(port, host, function(){
   console.log('koscom-poc app listening on port 3000!');
+});
+
+io.on('connection', function(socketObj){
+
+  socket = socketObj;
+  console.log('user connected');
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
+  socket.on('issuerChat', function(msg){
+    console.log('user: ' + msg.user + ', message: ' + msg.message);
+    io.emit('issuerChat', msg);
+  });
+
+  socket.on('receiverChat', function(msg){
+    console.log('user: ' + msg.user + ', message: ' + msg.message);
+    io.emit('receiverChat', msg);
+  });
+
 });
 
 module.exports = app;
