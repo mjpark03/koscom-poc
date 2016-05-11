@@ -13,7 +13,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: '127.0.0.1:3000/sample/data',
+            url: 'localhost:3000/sample/data',
             dataType: 'json',
             type: 'POST',
             data: {},
@@ -27,7 +27,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: '127.0.0.1:3000/sample/data',
+            url: 'localhost:3000/sample/data',
             dataType: 'json',
             type: 'GET',
             data: {},
@@ -45,7 +45,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: '127.0.0.1:3000/sample/data',
+            url: 'localhost:3000/sample/data',
             dataType: 'json',
             type: 'PUT',
             data: {assetName:'국민주택 2013-03'},
@@ -59,7 +59,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: '127.0.0.1:3000/sample/data',
+            url: 'localhost:3000/sample/data',
             dataType: 'json',
             type: 'DELETE',
             data: {},
