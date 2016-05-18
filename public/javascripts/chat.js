@@ -141,7 +141,7 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'http://localhost:3000/trade/receiver/confirmation',
+            url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/trade/receiver/confirmation',
             type: 'POST',
             data: {},
             success: function(result) {
