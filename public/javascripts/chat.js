@@ -192,3 +192,7 @@ $(function() {
         $('#receiverAssetInfo').modal('show');
     });
 });
+
+var setAsset = function(assetName) {
+    $("#issuerAssetName").val(assetName);
+};

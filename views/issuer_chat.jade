@@ -122,8 +122,9 @@ block content
           hr
 
           for asset in assets
-            p(style="display:inline; margin-right:20px;") #{asset.assetName}
-            p(style="display:inline") #{asset.amount}
+            a(onclick='setAsset("#{asset.assetName}")')
+              p(style="display:inline; margin-right:20px;") #{asset.assetName}
+              p(style="display:inline") #{asset.amount}
             br
 
         div.modal-footer
