@@ -13,7 +13,8 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
+            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
+            url: '/sample/data',
             dataType: 'json',
             type: 'POST',
             data: {},
@@ -27,7 +28,8 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
+            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
+            url: '/sample/data',
             dataType: 'json',
             type: 'GET',
             data: {},
@@ -45,7 +47,8 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
+            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
+            url: '/sample/data',
             dataType: 'json',
             type: 'PUT',
             data: {assetName:'국민주택 2013-03'},
@@ -59,7 +62,8 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
+            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
+            url: '/sample/data',
             dataType: 'json',
             type: 'DELETE',
             data: {},

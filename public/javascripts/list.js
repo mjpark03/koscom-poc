@@ -36,7 +36,8 @@ var joinTrade = function(assetCode, status) {
 var getAssetInfo = function(assetCode) {
 
     $.ajax({
-        url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//trade/asset?assetCode=' + assetCode,
+        // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//trade/asset?assetCode=' + assetCode,
+        url: '/trade/asset?assetCode=' + assetCode,
         type: 'GET',
         success: function(result) {
 
@@ -56,7 +57,8 @@ var getAssetInfo = function(assetCode) {
 var getHistoryAssetInfo = function(assetCode) {
 
     $.ajax({
-        url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//trade/asset?assetCode=' + assetCode,
+        // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//trade/asset?assetCode=' + assetCode,
+        url: '/trade/asset?assetCode=' + assetCode,
         type: 'GET',
         success: function(result) {
 
