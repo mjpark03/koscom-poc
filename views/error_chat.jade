@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  div.top
+    nav.navbar.navbar-default.navbar-static-top
+      a.navbar-brand.
+        Project
+      ul.nav.navbar-nav
+        li.nav-item.active
+          a.nav-link.
+            메신저
+
+  div.container
+
+    h3 현재 거래 채팅방의 정원이 초과하였습니다.
+    hr
+    button(type='button', class='btn btn-default', onclick="javascript:history.go(-1)") 돌아가기
+
+  //h1= title
+  //p Welcome to #{title}
