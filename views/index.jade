@@ -24,37 +24,61 @@ block content
           th 상태
           th 거래참여
       tbody
-        tr
-          td(style='vertical-align:middle;') 10:25
-          td(style='vertical-align:middle;')
-            a(href='/trade/chat/receiver') 국민주택 2013-02
-          td(style='vertical-align:middle;') 2018-02-28
-          td(style='vertical-align:middle;') 매도
-          td(style='vertical-align:middle;') 11578.50
-          td(style='vertical-align:middle;') 100
-          td(style='vertical-align:middle;') 대기
-          td(style='vertical-align:middle; text-align:center;')
-            button.btn.btn-default 거래참여
-        tr
-          td(style='vertical-align:middle;') 09:24
-          td(style='vertical-align:middle;') 통화안정증 0146-1804-02
-          td(style='vertical-align:middle;') 2018-04-02
-          td(style='vertical-align:middle;') 매수
-          td(style='vertical-align:middle;') 10016.69
-          td(style='vertical-align:middle;') 150
-          td(style='vertical-align:middle;') 대기
-          td(style='vertical-align:middle; text-align:center;')
-            button.btn.btn-default 거래참여
-        tr
-          td(style='vertical-align:middle;') 09:17
-          td(style='vertical-align:middle;') 국고채 02750-1709(12-4)
-          td(style='vertical-align:middle;') 2017-09-10
-          td(style='vertical-align:middle;') 매수
-          td(style='vertical-align:middle;') 10179.33
-          td(style='vertical-align:middle;') 20
-          td(style='vertical-align:middle;') 완료
-          td(style='vertical-align:middle; text-align:center;')
-            button.btn.btn-primary 거래참여
+        for item in list
+          tr
+            td(style='vertical-align:middle;') #{item.createdAt}
+            td(style='vertical-align:middle;')
+              a(href='javascript:getAssetInfo("#{item.assetCode}")') #{item.assetName}
+            td(style='vertical-align:middle;') #{item.expiredAt}
+            td(style='vertical-align:middle;') #{item.type == 'sell' ? '매도' : '매수'}
+            td(style='vertical-align:middle;') #{item.unitPrice}
+            td(style='vertical-align:middle;') #{item.amount}
+            td(style='vertical-align:middle;') #{item.status == 1 ? '대기' : '완료'}
+            td(style='vertical-align:middle; text-align:center;')
+              button(class='btn btn-default #{item.status == 1 ? "active" : "disabled"}', onclick='joinTrade("#{item.assetCode}", #{item.status})') 거래참여
+
+  div(class='modal fade', id='listAssetDetail', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          hr
+
+          p(style="display:inline") 종목코드 :
+          p(id='listAssetCode', style="display:inline")
+          br
+
+          p(style="display:inline") 종목명 :
+          p(id='listAssetName', style="display:inline")
+          br
+
+          p(style="display:inline") 발행일 :
+          p(id='listCreatedAt', style="display:inline")
+          br
+
+          p(style="display:inline") 만기일 :
+          p(id='listExpiredAt', style="display:inline")
+          br
+
+          p(style="display:inline") 이자지급유형 :
+          p(id='listInterestType', style="display:inline")
+          br
+
+          p(style="display:inline") 이자계산주기(월) :
+          p(id='listInterestPeriod', style="display:inline")
+          br
+
+          p(style="display:inline") 표면금리 :
+          p(id='listInterestRate', style="display:inline")
+          br
+
+          p(style="display:inline") 수량 :
+          p(id='listAmount', style="display:inline")
+          br
+
+        div.modal-footer
+          button(type='button', class='btn btn-default', data-dismiss='modal') 확인
 
   //h1= title
   //p Welcome to #{title}

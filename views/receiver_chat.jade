@@ -16,8 +16,6 @@ block content
       label 거래 메신저
       span#feedback
 
-
-
       form.form-inline
         div
           br
@@ -29,16 +27,65 @@ block content
 
               td
                 div#userWindow.shadow
+                  ul(id='receiverUserWindow')
+                    p 참여자 : #{issuer}
+                    p 참여자 : #{receiver}
 
             tr
               td
                 b(style='margin-left:5px;') 나의 잔고
-                button(style='margin-left:15px;', class='btn btn-default btn-s') 조회
+                button(id='receiverAssetBtn', style='margin-left:15px;', class='btn btn-default btn-s') 조회
             tr
               td
                 textarea(id='receiverMessage', class='form-control', style='min-width: 100%', rows='3')
               td
                 button(id='receiverSendBtn', style='margin-left:15px;', class='btn btn-default btn-lg') 보내기
+                button(id='receiverExitChat', style='margin-left:15px;', class='btn btn-default btn-lg') 나가기
+
+
+  div(class='modal fade', id='receiverSign', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          h2 거래 확정 서명
+          hr
+
+          p(id='modalIssuerName', style="display:inline")
+          br
+
+          p(style="display:inline") 종목 :
+          p(id='modalReceiverAssetName', style="display:inline")
+          br
+
+          p(style="display:inline") 단가 :
+          p(id='modalReceiverUnitPrice', style="display:inline")
+          br
+
+          p(style="display:inline") 수량 :
+          p(id='modalReceiverAmount', style="display:inline")
+          br
+
+        div.modal-footer
+          button(id='receiverSignBtn', type='button', class='btn btn-default', data-dismiss='modal') sign
+
+  div(class='modal fade', id='receiverAssetInfo', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          h2 잔고 조회
+          hr
+
+          for asset in assets
+            p(style="display:inline; margin-right:20px;") #{asset.assetName}
+            p(style="display:inline") #{asset.amount}
+            br
+
+        div.modal-footer
+          button(type='button', class='btn btn-default', data-dismiss='modal') 확인
 
   //h1= title
   //p Welcome to #{title}

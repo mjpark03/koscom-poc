@@ -22,26 +22,19 @@ block content
           th 수량
           th 금액
           th 거래일자
-          th 거래시각
       tbody
-        tr(data-toggle='modal' data-target='#historyDetail')
-          td(style='vertical-align:middle;') 1
-          td(style='vertical-align:middle;') 국민주택 2013-02
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;') 100
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;') 2016-04-02
-          td(style='vertical-align:middle; text-align:center;') 09:24
-        tr
-          td(style='vertical-align:middle;') 2
-          td(style='vertical-align:middle;') 통화안정증 0146-1804-02
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;') 150
-          td(style='vertical-align:middle;')
-          td(style='vertical-align:middle;') 2016-04-03
-          td(style='vertical-align:middle; text-align:center;') 10:20
+        for item, i in list
+          if item.issuerSign == 'Y' && item.receiverSign == 'Y'
+            tr
+              td(style='vertical-align:middle;') #{i+1}
+              td(style='vertical-align:middle;')
+                a(href='javascript:getHistoryAssetInfo("#{item.assetCode}")') #{item.assetName}
+              td(style='vertical-align:middle;') #{item.fromAddress}
+              td(style='vertical-align:middle;') #{item.toAddress}
+              td(style='vertical-align:middle;') #{item.amount}
+              td(style='vertical-align:middle;') #{item.amount * item.unitPrice}
+              td(style='vertical-align:middle;') #{item.updatedAt}
+
 
   div(class='modal fade', id='historyDetail', role='dialog')
     div.modal-dialog
@@ -81,6 +74,49 @@ block content
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 닫기
+
+  div(class='modal fade', id='historyAssetDetail', role='dialog')
+    div.modal-dialog
+
+      div.modal-content
+        div.modal-body
+
+          hr
+
+          p(style="display:inline") 종목코드 :
+          p(id='historyAssetCode', style="display:inline")
+          br
+
+          p(style="display:inline") 종목명 :
+          p(id='historyAssetName', style="display:inline")
+          br
+
+          p(style="display:inline") 발행일 :
+          p(id='historyCreatedAt', style="display:inline")
+          br
+
+          p(style="display:inline") 만기일 :
+          p(id='historyExpiredAt', style="display:inline")
+          br
+
+          p(style="display:inline") 이자지급유형 :
+          p(id='historyInterestType', style="display:inline")
+          br
+
+          p(style="display:inline") 이자계산주기(월) :
+          p(id='historyInterestPeriod', style="display:inline")
+          br
+
+          p(style="display:inline") 표면금리 :
+          p(id='historyInterestRate', style="display:inline")
+          br
+
+          p(style="display:inline") 수량 :
+          p(id='historyAmount', style="display:inline")
+          br
+
+        div.modal-footer
+          button(type='button', class='btn btn-default', data-dismiss='modal') 확인
 
   //h1= title
   //p Welcome to #{title}

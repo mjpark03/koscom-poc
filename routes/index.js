@@ -2,22 +2,10 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/db').db();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
-/* */
 router.get('/chat', function(req, res, next) {
   res.render('chat', { title: 'Express' });
 });
 
-/* */
-router.get('/history', function(req, res, next) {
-  res.render('history', { title: 'Express' });
-});
-
-/* */
 router.get('/sample', function(req, res, next) {
   res.render('sample', { title: 'Express' });
 });

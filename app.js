@@ -5,19 +5,27 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var user = require('./config/user');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var trade = require('./routes/trade');
 
+/*
+setting server and socket.io
+ */
 var app = express();
-
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 var socket;
 
 var port = 3000;
-var host = '127.0.0.1';
+var host = 'localhost';
+
+var getIOInstance = function() {
+  return io;
+};
+
+var routes = require('./routes/index');
+var users = require('./routes/users');
+var trade = require('./routes/trade')(getIOInstance());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -70,8 +78,13 @@ server.listen(port, host, function(){
   console.log('koscom-poc app listening on port 3000!');
 });
 
-io.on('connection', function(socketObj){
+/*
+connecting socket.io
+1. socket.on: listen from client
+2. io.emit: send message to client
+ */
 
+io.on('connection', function(socketObj){
   socket = socketObj;
   console.log('user connected');
 
@@ -88,7 +101,6 @@ io.on('connection', function(socketObj){
     console.log('user: ' + msg.user + ', message: ' + msg.message);
     io.emit('receiverChat', msg);
   });
-
 });
 
 module.exports = app;
