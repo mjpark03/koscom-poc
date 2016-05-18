@@ -13,7 +13,6 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
             url: '/sample/data',
             dataType: 'json',
             type: 'POST',
@@ -28,7 +27,6 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com//sample/data',
             url: '/sample/data',
             dataType: 'json',
             type: 'GET',
@@ -47,7 +45,6 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
             url: '/sample/data',
             dataType: 'json',
             type: 'PUT',
@@ -62,7 +59,6 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/sample/data',
             url: '/sample/data',
             dataType: 'json',
             type: 'DELETE',

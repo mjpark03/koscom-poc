@@ -114,7 +114,6 @@ $(function() {
         var amount = $('#issuerAmount').val();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/trade/issuer/confirmation',
             url: '/trade/issuer/confirmation',
             type: 'POST',
             data: {assetName:assetName, unitPrice:unitPrice, amount:amount},
@@ -142,7 +141,6 @@ $(function() {
         e.preventDefault();
 
         $.ajax({
-            // url: 'http://ec2-52-193-50-198.ap-northeast-1.compute.amazonaws.com/trade/receiver/confirmation',
             url: '/trade/receiver/confirmation',
             type: 'POST',
             data: {},

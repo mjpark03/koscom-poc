@@ -66,13 +66,7 @@ var tradeUtils = {
             if(type == 'issuer') {
                 res.render('issuer_chat', { title: 'Trade Chat', issuer : user.issuerName, assets : assetResults });
             } else {
-
-                if(user.count > 2) {
-                    res.render('error_chat');
-                } else {
-                    res.render('receiver_chat', { title: 'Trade Chat', issuer : user.issuerName, receiver : user.receiverName, count : user.count, assets : assetResults  });
-                }
-                
+                res.render('receiver_chat', { title: 'Trade Chat', issuer : user.issuerName, receiver : user.receiverName, count : user.count, assets : assetResults  });
             }
 
         });
