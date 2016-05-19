@@ -20,7 +20,7 @@ var user = {
         amount : 0
     },
 
-    issuerName : '손새미',
+    issuerName : '손새임',
     receiverName : '이강욱',
     count : 0
 }

@@ -9,7 +9,7 @@
 $(function() {
     'use strict';
 
-    var issuer = '손새미';
+    var issuer = '손새임';
     var receiver = '이강욱';
     var socket = io();
 
