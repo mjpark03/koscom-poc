@@ -136,10 +136,11 @@ block content
           table.table.table-borderless
             for asset in assets
               tr
-                td
+                td(width='35%')
                   a(onclick='setAsset("#{asset.assetName}")')
                     p(style="display:inline; margin-right:20px;") #{asset.assetName}
-                    p(style="display:inline") #{asset.amount}
+                td
+                  p(style="display:inline") #{asset.amount}
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 확인
