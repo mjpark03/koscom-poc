@@ -43,13 +43,35 @@ var confirmIssuer = function(req, res, next) {
             // 3. invoke sign (issuer)
             scalechain.issuerSignTx(function(result) {
 
-                // 4. update issuerSign
-                trade.signed_tx_hex = result.signed_tx_hex;
-                db.collection('trade').update({ assetCode : trade.assetCode }, { $set : { issuerSign : 'Y', unitPrice : trade.unitPrice, amount : trade.amount }}, function(err, result) {
+                var complete = result.complete;
 
-                    // 5. alert to receiver for sign
-                    io.sockets.emit('receiverSign', {assetName : trade.assetName, unitPrice : trade.unitPrice, amount : trade.amount, issuerName : user.issuerName});
-                });
+                if(!complete) {
+                    console.log('complete true');
+
+                    // 4. invoke sign one more (issuer)
+                    scalechain.issuerSignTxWithPrivKey(function(result) {
+
+                        // 5. update issuerSign
+                        trade.signed_tx_hex = result.signed_tx_hex;
+                        db.collection('trade').update({ assetCode : trade.assetCode }, { $set : { issuerSign : 'Y', unitPrice : trade.unitPrice, amount : trade.amount }}, function(err, result) {
+
+                            // 6. alert to receiver for sign
+                            io.sockets.emit('receiverSign', {assetName : trade.assetName, unitPrice : trade.unitPrice, amount : trade.amount, issuerName : user.issuerName});
+                        });
+                    }, function(error) {
+
+                    });
+                } else {
+                    console.log('complete false');
+
+                    // 4. update issuerSign
+                    trade.signed_tx_hex = result.signed_tx_hex;
+                    db.collection('trade').update({ assetCode : trade.assetCode }, { $set : { issuerSign : 'Y', unitPrice : trade.unitPrice, amount : trade.amount }}, function(err, result) {
+
+                        // 5. alert to receiver for sign
+                        io.sockets.emit('receiverSign', {assetName : trade.assetName, unitPrice : trade.unitPrice, amount : trade.amount, issuerName : user.issuerName});
+                    });
+                }
             }, function(error) {
                 res.status(500).send({"msg":"fail"});
             })
