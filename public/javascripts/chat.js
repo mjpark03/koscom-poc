@@ -99,10 +99,12 @@ $(function() {
         var assetName = $('#issuerAssetName').val();
         var unitPrice = $('#issuerUnitPrice').val();
         var amount = $('#issuerAmount').val();
+        var addr = $('#issuerAddr').val();
 
         $('.modal-body #modalAssetName').text(assetName);
         $('.modal-body #modalUnitPrice').text(unitPrice);
         $('.modal-body #modalAmount').text(amount);
+        $('.modal-body #modalAddr').text(addr);
         $('#issuerSign').modal('show');
     });
 
@@ -129,11 +131,13 @@ $(function() {
         var unitPrice = msg.unitPrice;
         var amount = msg.amount;
         var issuer = msg.issuerName;
+        var addr = $('#receiverAddr').val();
 
         $('.modal-body #modalIssuerName').text(issuer + '님이 제안한 아래의 거래 확정을 위해 사인하세요.');
         $('.modal-body #modalReceiverAssetName').text(assetName);
         $('.modal-body #modalReceiverUnitPrice').text(unitPrice);
         $('.modal-body #modalReceiverAmount').text(amount);
+        $('.modal-body #modalReceiverAddr').text(addr);
         $('#receiverSign').modal('show');
     });
 

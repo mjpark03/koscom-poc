@@ -9,7 +9,7 @@ block content
           a.nav-link.
             거래 결과
 
-  div.container
+  div.table-responsive
     table.table.table-striped.table-bordered
       thead
         tr
@@ -27,8 +27,10 @@ block content
               td(style='vertical-align:middle;') #{i+1}
               td(style='vertical-align:middle;')
                 a(href='javascript:getHistoryAssetInfo("#{item.assetCode}")') #{item.assetName}
-              td(style='vertical-align:middle;') #{item.fromAddress}
-              td(style='vertical-align:middle;') #{item.toAddress}
+              td(style='vertical-align:middle;')
+                a(data-toggle='popover', data-content='#{item.fromAddress}') #{item.fromAddress.substr(1, 7)} ..
+              td(style='vertical-align:middle;')
+                a(data-toggle='popover', data-content='#{item.toAddress}') #{item.toAddress.substr(1, 7)} ..
               td(style='vertical-align:middle;') #{item.amount}
               td(style='vertical-align:middle;') #{item.amount * item.unitPrice}
               td(style='vertical-align:middle;') #{item.updatedAt}
@@ -57,6 +59,11 @@ block content
               td
                 p(style="display:inline") 발행일 :
                 p(id='historyCreatedAt', style="display:inline")
+
+            tr
+              td
+                p(style="display:inline") 발행사 :
+                p(id='historyListIssuer', style="display:inline")
 
             tr
               td

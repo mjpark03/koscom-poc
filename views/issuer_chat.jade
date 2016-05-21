@@ -19,6 +19,7 @@ block content
       form.form-inline
         div
           br
+          input(type='hidden', id='issuerAddr', value='#{issuerAddr}')
           table.table.table-borderless
             tr
               td(width='30%')
@@ -83,6 +84,11 @@ block content
               td
                 p(style="display:inline") 수량 :
                 p(id='modalAmount', style="display:inline")
+
+            tr
+              td
+                p(style="display:inline") 자산 주소 :
+                p(id='modalAddr', style="display:inline")
 
         div.modal-footer
           button(id='issuerSignBtn', type='button', class='btn btn-default', data-dismiss='modal') sign

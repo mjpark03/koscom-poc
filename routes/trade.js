@@ -6,6 +6,7 @@ var router = express.Router();
 var io;
 
 var db = require('../config/db').db();
+var util = require('../util/util');
 var tradeUtil = require('../util/trade');
 var user = require('../config/user');
 var api = require('../config/api');
@@ -72,8 +73,10 @@ var confirmReceiver = function(req, res, next) {
         // 2. send final signed transaction
         scalechain.sendTransaction(function(result) {
 
+            var updatedAt = util._getFormattedDate();
+
             // 3. update receiverSign & status
-            db.collection('trade').update({assetCode : trade.assetCode}, {$set : {toAddress : user.issuer.to_address, receiverSign : 'Y', status : 2}}, function(err, result) {
+            db.collection('trade').update({assetCode : trade.assetCode}, {$set : {toAddress : user.issuer.to_address, receiverSign : 'Y', status : 2, updatedAt : updatedAt}}, function(err, result) {
 
                 // 4. alert to issuer for complete
                 io.sockets.emit('receiverSignComplete', {receiver : user.receiverName, assetName : trade.assetName, unitPrice : trade.unitPrice, amount : trade.amount});
@@ -119,7 +122,6 @@ router.get('/chat', function(req, res, next) {
 
 router.get('/asset', function(req, res, next) {
     var assetCode = req.query.assetCode;
-    console.log('assetCode: ' + assetCode);
 
     db.collection('trade').find({assetCode:assetCode}, function (err, list) {
         res.status(200).send({asset : list[0]});

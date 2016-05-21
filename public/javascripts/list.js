@@ -21,6 +21,8 @@ $(function() {
         });
     });
 
+    $('[data-toggle="popover"]').popover({trigger: 'click hover', placement: 'auto', delay: {show: 50, hide: 400} });
+
 });
 
 /* */
@@ -48,6 +50,7 @@ var getAssetInfo = function(assetCode) {
             $('.modal-body #listInterestPeriod').text(result.asset.interestPeriod);
             $('.modal-body #listInterestRate').text(result.asset.interestRate);
             $('.modal-body #listAmount').text(result.asset.amount);
+            $('.modal-body #listIssuer').text(result.asset.issuer);
             $('#listAssetDetail').modal('show');
         }
     });
@@ -68,6 +71,7 @@ var getHistoryAssetInfo = function(assetCode) {
             $('.modal-body #historyInterestPeriod').text(result.asset.interestPeriod);
             $('.modal-body #historyInterestRate').text(result.asset.interestRate);
             $('.modal-body #historyAmount').text(result.asset.amount);
+            $('.modal-body #historyListIssuer').text(result.asset.issuer);
             $('#historyAssetDetail').modal('show');
         }
     });

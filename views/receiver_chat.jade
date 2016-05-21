@@ -17,6 +17,7 @@ block content
       form.form-inline
         div
           br
+          input(type='hidden', id='receiverAddr', value='#{receiverAddr}')
           table.table.table-borderless
             tr
               td(width='30%')
@@ -69,6 +70,11 @@ block content
               td
                 p(style="display:inline") 수량 :
                 p(id='modalReceiverAmount', style="display:inline")
+            tr
+              td
+                p(style="display:inline") 원화 주소 :
+                p(id='modalReceiverAddr', style="display:inline")
+
 
         div.modal-footer
           button(id='receiverSignBtn', type='button', class='btn btn-default', data-dismiss='modal') sign
