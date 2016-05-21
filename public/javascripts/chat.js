@@ -9,8 +9,8 @@
 $(function() {
     'use strict';
 
-    var issuer = '손새임';
-    var receiver = '이강욱';
+    var issuer = '홍길동';
+    var receiver = '김기사';
     var socket = io();
 
     /*
