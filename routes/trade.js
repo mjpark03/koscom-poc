@@ -142,9 +142,7 @@ router.get('/chat/receiver', function(req, res, next) {
     user.count = user.count + 1;
 
     // 1. alert to issuer about receiver join
-    if(user.count <= 2) {
-        io.sockets.emit('receiverJoin', {receiver : user.receiverName});
-    }
+    io.sockets.emit('receiverJoin', {receiver : user.receiverName});
 
     // 2. get asset info
     scalechain.getAssetInfo(user.receiver.account_id, function(result) {
