@@ -117,6 +117,26 @@ var scalechain = {
         util._requestPost(reqOpt, reqData, successCallback, errorCallback);
     },
 
+    receiverSignTxWithPrivKey : function(successCallback, errorCallback) {
+
+        var reqData = {
+            'unsigned_tx_hex' : trade.signed_tx_hex
+        };
+
+        var reqOpt = {
+            url : api.host + "/v1/transactions/sign",
+            method: "POST",
+            json : reqData,
+            headers : {
+                'Content-Type' : 'application/json',
+                'network' : 'testnet',
+                'Authorization' : 'Bearer ' + api.accessToken
+            }
+        };
+
+        util._requestPost(reqOpt, reqData, successCallback, errorCallback);
+    },
+
     sendTransaction : function(successCallback, errorCallback) {
 
         var reqData = {
