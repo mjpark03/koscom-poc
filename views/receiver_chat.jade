@@ -4,8 +4,6 @@ block content
 
   div.top
     nav.navbar.navbar-default.navbar-static-top
-      a.navbar-brand.
-        Project
       ul.nav.navbar-nav
         li.nav-item.active
           a.nav-link.
@@ -21,12 +19,12 @@ block content
           br
           table.table.table-borderless
             tr
-              td(width='40%')
-                div#msgWindow.shadow
+              td(width='30%')
+                div#receiverMsgWindow.shadow
                   ul(id='receiverWindow')
 
               td
-                div#userWindow.shadow
+                div#UserWindowForReceiver.shadow
                   ul(id='receiverUserWindow')
                     p 참여자 : #{issuer}
                     p 참여자 : #{receiver}
@@ -52,23 +50,29 @@ block content
           h2 거래 확정 서명
           hr
 
-          p(id='modalIssuerName', style="display:inline")
-          br
+          table.table.table-borderless
+            tr
+              td
+                p(id='modalIssuerName', style="display:inline")
 
-          p(style="display:inline") 종목 :
-          p(id='modalReceiverAssetName', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 종목 :
+                p(id='modalReceiverAssetName', style="display:inline")
 
-          p(style="display:inline") 단가 :
-          p(id='modalReceiverUnitPrice', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 단가 :
+                p(id='modalReceiverUnitPrice', style="display:inline")
 
-          p(style="display:inline") 수량 :
-          p(id='modalReceiverAmount', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 수량 :
+                p(id='modalReceiverAmount', style="display:inline")
 
         div.modal-footer
           button(id='receiverSignBtn', type='button', class='btn btn-default', data-dismiss='modal') sign
+
 
   div(class='modal fade', id='receiverAssetInfo', role='dialog')
     div.modal-dialog
@@ -79,10 +83,12 @@ block content
           h2 잔고 조회
           hr
 
-          for asset in assets
-            p(style="display:inline; margin-right:20px;") #{asset.assetName}
-            p(style="display:inline") #{asset.amount}
-            br
+          table.table.table-borderless
+            for asset in assets
+              tr
+                td
+                  p(style="display:inline; margin-right:20px;") #{asset.assetName}
+                  p(style="display:inline") #{asset.amount}
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 확인

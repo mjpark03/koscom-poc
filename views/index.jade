@@ -4,14 +4,12 @@ block content
 
   div.top
     nav.navbar.navbar-default.navbar-static-top
-      a.navbar-brand.
-        Project
       ul.nav.navbar-nav
         li.nav-item.active
           a.nav-link.
             거래 게시판
 
-  div.container
+  div.table-responsive
     table.table.table-striped.table-bordered
       thead
         tr
@@ -45,37 +43,46 @@ block content
 
           hr
 
-          p(style="display:inline") 종목코드 :
-          p(id='listAssetCode', style="display:inline")
-          br
+          table.table.table-borderless
+            tr
+              td
+                p(style="display:inline") 종목코드 :
+                p(id='listAssetCode', style="display:inline")
 
-          p(style="display:inline") 종목명 :
-          p(id='listAssetName', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 종목명 :
+                p(id='listAssetName', style="display:inline")
 
-          p(style="display:inline") 발행일 :
-          p(id='listCreatedAt', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 발행일 :
+                p(id='listCreatedAt', style="display:inline")
 
-          p(style="display:inline") 만기일 :
-          p(id='listExpiredAt', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 만기일 :
+                p(id='listExpiredAt', style="display:inline")
 
-          p(style="display:inline") 이자지급유형 :
-          p(id='listInterestType', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 이자지급유형 :
+                p(id='listInterestType', style="display:inline")
 
-          p(style="display:inline") 이자계산주기(월) :
-          p(id='listInterestPeriod', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 이자계산주기(월) :
+                p(id='listInterestPeriod', style="display:inline")
 
-          p(style="display:inline") 표면금리 :
-          p(id='listInterestRate', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 표면금리 :
+                p(id='listInterestRate', style="display:inline")
 
-          p(style="display:inline") 수량 :
-          p(id='listAmount', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 수량 :
+                p(id='listAmount', style="display:inline")
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 확인

@@ -4,12 +4,10 @@ block content
 
   div.top
     nav.navbar.navbar-default.navbar-static-top
-      a.navbar-brand.
-        Project
       ul.nav.navbar-nav
         li.nav-item.active
           a.nav-link.
-            거래 내역
+            거래 결과
 
   div.container
     table.table.table-striped.table-bordered
@@ -36,45 +34,6 @@ block content
               td(style='vertical-align:middle;') #{item.updatedAt}
 
 
-  div(class='modal fade', id='historyDetail', role='dialog')
-    div.modal-dialog
-
-      div.modal-content
-        div.modal-body
-
-          table.table.table-striped.table-bordered
-            tbody
-              tr
-                td 종목코드
-                td KR1015014320
-              tr
-                td 종목명
-                td 국민주택 2013-02
-              tr
-                td 발행일
-                td 2013-02-28
-              tr
-                td 만기일
-                td 2018-02-28
-              tr
-                td 이자지급유형
-                td 복리채
-              tr
-                td 이자계산주기(월)
-                td 12
-              tr
-                td 표면금리
-                td 2.5
-              tr
-                td 온라인소유자
-                td 게시자A
-              tr
-                td 수량
-                td 100
-
-        div.modal-footer
-          button(type='button', class='btn btn-default', data-dismiss='modal') 닫기
-
   div(class='modal fade', id='historyAssetDetail', role='dialog')
     div.modal-dialog
 
@@ -83,37 +42,46 @@ block content
 
           hr
 
-          p(style="display:inline") 종목코드 :
-          p(id='historyAssetCode', style="display:inline")
-          br
+          table.table.table-borderless
+            tr
+              td
+                p(style="display:inline") 종목코드 :
+                p(id='historyAssetCode', style="display:inline")
 
-          p(style="display:inline") 종목명 :
-          p(id='historyAssetName', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 종목명 :
+                p(id='historyAssetName', style="display:inline")
 
-          p(style="display:inline") 발행일 :
-          p(id='historyCreatedAt', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 발행일 :
+                p(id='historyCreatedAt', style="display:inline")
 
-          p(style="display:inline") 만기일 :
-          p(id='historyExpiredAt', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 만기일 :
+                p(id='historyExpiredAt', style="display:inline")
 
-          p(style="display:inline") 이자지급유형 :
-          p(id='historyInterestType', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 이자지급유형 :
+                p(id='historyInterestType', style="display:inline")
 
-          p(style="display:inline") 이자계산주기(월) :
-          p(id='historyInterestPeriod', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 이자계산주기(월) :
+                p(id='historyInterestPeriod', style="display:inline")
 
-          p(style="display:inline") 표면금리 :
-          p(id='historyInterestRate', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 표면금리 :
+                p(id='historyInterestRate', style="display:inline")
 
-          p(style="display:inline") 수량 :
-          p(id='historyAmount', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 수량 :
+                p(id='historyAmount', style="display:inline")
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 확인

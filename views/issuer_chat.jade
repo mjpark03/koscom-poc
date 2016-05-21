@@ -4,8 +4,6 @@ block content
 
   div.top
     nav.navbar.navbar-default.navbar-static-top
-      a.navbar-brand.
-        Project
       ul.nav.navbar-nav
         li.nav-item.active
           a.nav-link.
@@ -23,29 +21,32 @@ block content
           br
           table.table.table-borderless
             tr
-              td(width='40%')
-                div#msgWindow.shadow
+              td(width='30%')
+                div#issuerMsgWindow.shadow
                   ul(id='issuerWindow')
 
               td
-                div#userWindow.shadow
+                div#UserWindowForIssuer.shadow
                   ul(id='issuerUserWindow')
                     p 참여자 : #{issuer}
 
             tr
               td
-                select(class='form-control', id='issuerAssetName') 종목
+                select(class='form-control input-medium', id='issuerAssetName') 종목
                   option(value='') - 종목선택 -
                   for asset in assets
                     option(value='#{asset.assetName}') #{asset.assetName}
 
-                b(style='margin-left:15px;') 단가
-                input(id='issuerUnitPrice', type='text', style='margin-left:10px;', size='15px')
-                b(style='margin-left:15px;') 수량
-                input(id='issuerAmount', type='text', style='margin-left:10px;', size='15px')
-
+              td(rowspan="3")
+                button(id='issuerConfirmBtn', style='margin-left:15px;', class='btn btn-default btn-lg') 거래확정
+            tr
               td
-                button(id='issuerConfirmBtn', style='margin-left:15px;', class='btn btn-default btn-lg') 자산확정
+                b(style='margin-left:1px;') 단가
+                input(id='issuerUnitPrice', type='text', style='margin-left:10px;', class='input-medium')
+            tr
+              td
+                b(style='margin-left:1px;') 수량
+                input(id='issuerAmount', type='text', style='margin-left:10px;', class='input-medium')
             tr
               td
                 b(style='margin-left:5px;') 나의 잔고
@@ -68,21 +69,23 @@ block content
           h2 거래 확정
           hr
 
-          p(style="display:inline") 종목 :
-          p(id='modalAssetName', style="display:inline")
-          br
+          table.table.table-borderless
+            tr
+              td
+                p(style="display:inline") 종목 :
+                p(id='modalAssetName', style="display:inline")
+            tr
+              td
+                p(style="display:inline") 단가 :
+                p(id='modalUnitPrice', style="display:inline")
 
-          p(style="display:inline") 단가 :
-          p(id='modalUnitPrice', style="display:inline")
-          br
-
-          p(style="display:inline") 수량 :
-          p(id='modalAmount', style="display:inline")
-          br
+            tr
+              td
+                p(style="display:inline") 수량 :
+                p(id='modalAmount', style="display:inline")
 
         div.modal-footer
           button(id='issuerSignBtn', type='button', class='btn btn-default', data-dismiss='modal') sign
-
 
 
   div(class='modal fade', id='receiverSignComplete', role='dialog')
@@ -94,23 +97,26 @@ block content
           h2 거래 확정 완료
           hr
 
-          p(id='modalReceiverName', style="display:inline")
-          br
-
-          p(style="display:inline") 종목 :
-          p(id='modalIssuerAssetName', style="display:inline")
-          br
-
-          p(style="display:inline") 단가 :
-          p(id='modalIssuerUnitPrice', style="display:inline")
-          br
-
-          p(style="display:inline") 수량 :
-          p(id='modalIssuerAmount', style="display:inline")
-          br
+          table.table.table-borderless
+            tr
+              td
+                p(id='modalReceiverName', style="display:inline")
+            tr
+              td
+                p(style="display:inline") 종목 :
+                p(id='modalIssuerAssetName', style="display:inline")
+            tr
+              td
+                p(style="display:inline") 단가 :
+                p(id='modalIssuerUnitPrice', style="display:inline")
+            tr
+              td
+                p(style="display:inline") 수량 :
+                p(id='modalIssuerAmount', style="display:inline")
 
         div.modal-footer
           button(id='issuerCheckBtn', type='button', class='btn btn-default', data-dismiss='modal') 확인
+
 
   div(class='modal fade', id='issuerAssetInfo', role='dialog')
     div.modal-dialog
@@ -121,11 +127,13 @@ block content
           h2 잔고 조회
           hr
 
-          for asset in assets
-            a(onclick='setAsset("#{asset.assetName}")')
-              p(style="display:inline; margin-right:20px;") #{asset.assetName}
-              p(style="display:inline") #{asset.amount}
-            br
+          table.table.table-borderless
+            for asset in assets
+              tr
+                td
+                  a(onclick='setAsset("#{asset.assetName}")')
+                    p(style="display:inline; margin-right:20px;") #{asset.assetName}
+                    p(style="display:inline") #{asset.amount}
 
         div.modal-footer
           button(type='button', class='btn btn-default', data-dismiss='modal') 확인
